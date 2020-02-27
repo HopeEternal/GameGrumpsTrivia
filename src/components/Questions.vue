@@ -1,8 +1,7 @@
 <template>
   <v-container>
-    <h1 class="orange--text text--darken-4">Measure your Game Grumps cred!</h1>
     <v-card v-for="(question, index) in questions" :key="index" class="pa-5 ma-8">
-      <v-card-title>Question {{index +1}}</v-card-title>
+      <v-card-title class="orange--text text--darken-4">Question {{index +1}}</v-card-title>
       <v-card-text>{{question.question}}</v-card-text>
       <v-card-actions>
         <v-radio-group class="ms-5">
@@ -20,7 +19,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Questions",
 
   data: () => ({
     questions: [
