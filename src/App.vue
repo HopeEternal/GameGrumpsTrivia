@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
     <v-app-bar app color="orange darken-4" dark>
       <v-icon x-large class="pa-3">mdi-gamepad-variant</v-icon>
       <v-toolbar-title>
