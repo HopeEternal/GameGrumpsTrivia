@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "Questions",
+  name: "QuizBar",
 
   data: () => ({})
 };
