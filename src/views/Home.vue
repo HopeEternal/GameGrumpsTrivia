@@ -1,4 +1,3 @@
-
 <template>
   <v-content>
     <v-container class="fill-height" fluid>
@@ -38,31 +37,37 @@
         </v-col>
       </v-row>
     </v-container>
+    {{ quizSettings }}
   </v-content>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
 
   data: () => ({
-    difficulties: ["Easy", "Average", "Epic"],
-    difficultyLevel: "",
-    name: "",
+    difficulties: ['Easy', 'Average', 'Epic'],
+    difficultyLevel: '',
+    name: '',
     //Validation
     valid: false,
     nameRules: [
-      v => !!v || "Name is required",
-      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+      v => !!v || 'Name is required',
+      v => (v && v.length <= 10) || 'Name must be less than 10 characters'
     ],
-    difficultyRules: [v => !!v || "Please select a diffuculty!"]
+    difficultyRules: [v => !!v || 'Please select a diffuculty!']
   }),
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
         this.snackbar = true;
-        this.$router.push("/StartQuiz");
+        this.$router.push('/StartQuiz');
       }
+    }
+  },
+  computed: {
+    quizSettings() {
+      return this.$store.state.test;
     }
   }
 };
