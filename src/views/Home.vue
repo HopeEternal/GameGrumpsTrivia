@@ -8,49 +8,36 @@
             <v-toolbar color="primary" dark flat>
               <v-toolbar-title>Pick your poison!</v-toolbar-title>
               <v-spacer />
-              <v-tooltip right>
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    large
-                    href="https://codepen.io/johnjleider/pen/pMvGQO"
-                    target="_blank"
-                    v-on="on"
-                  >
-                    <v-icon>mdi-codepen</v-icon>
-                  </v-btn>
-                </template>
-                <span>Codepen</span>
-              </v-tooltip>
             </v-toolbar>
             <v-card-text>
-              <v-form>
+              <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
+                  v-model="name"
                   label="Enter Your Name"
                   name="name"
+                  :rules="nameRules"
+                  :counter="15"
                   prepend-icon="mdi-account-circle"
                   type="text"
-                  v-model="name"
                 />
                 <v-select
-                  v-model="select"
+                  v-model="difficultyLevel"
                   :items="difficulties"
                   label="Select a difficulty!"
                   required
-                  @change="$v.select.$touch()"
-                  @blur="$v.select.$touch()"
+                  prepend-icon="mdi-chess-rook"
+                  :rules="difficultyRules"
                 ></v-select>
               </v-form>
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="primary">Start Quiz!</v-btn>
+              <v-btn color="primary" @click="validate">Start Quiz!</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-    <p>{{name}}</p>
   </v-content>
 </template>
 
@@ -60,8 +47,23 @@ export default {
 
   data: () => ({
     difficulties: ["Easy", "Average", "Epic"],
+    difficultyLevel: "",
     name: "",
-    select: "none"
-  })
+    //Validation
+    valid: false,
+    nameRules: [
+      v => !!v || "Name is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+    ],
+    difficultyRules: [v => !!v || "Please select a diffuculty!"]
+  }),
+  methods: {
+    validate() {
+      if (this.$refs.form.validate()) {
+        this.snackbar = true;
+        this.$router.push("/StartQuiz");
+      }
+    }
+  }
 };
 </script>
