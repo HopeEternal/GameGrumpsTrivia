@@ -5,16 +5,6 @@
       <v-toolbar-title>
         <h2 class="font-weight-thin">Game Grumps Trivia!</h2>
       </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-      <nav class="white" light>
-        <v-btn text>
-          <router-link to="/">Home</router-link>
-        </v-btn>
-        <v-btn text>
-          <router-link to="/about">About</router-link>
-        </v-btn>
-      </nav>
     </v-app-bar>
 
     <v-content>

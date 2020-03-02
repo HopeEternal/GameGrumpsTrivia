@@ -30,6 +30,7 @@
                   name="name"
                   prepend-icon="mdi-account-circle"
                   type="text"
+                  v-model="name"
                 />
                 <v-select
                   v-model="select"
@@ -49,6 +50,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <p>{{name}}</p>
   </v-content>
 </template>
 
@@ -58,6 +60,7 @@ export default {
 
   data: () => ({
     difficulties: ["Easy", "Average", "Epic"],
+    name: "",
     select: "none"
   })
 };
