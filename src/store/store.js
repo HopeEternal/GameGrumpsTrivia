@@ -12,8 +12,11 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    updateSettings(state, settings) {
+    updateNameSettings(state, settings) {
       state.quizSettings.name = settings;
+    },
+    updateDifficultySettings(state, settings) {
+      state.quizSettings.difficultyLevel = settings;
     }
   }
 });

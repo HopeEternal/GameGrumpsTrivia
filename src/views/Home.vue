@@ -11,14 +11,13 @@
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
-                  :value="name"
                   label="Enter Your Name"
                   name="name"
                   :rules="nameRules"
                   :counter="15"
                   prepend-icon="mdi-account-circle"
                   type="text"
-                  @input="updateGameSettings"
+                  @input="updateName"
                 />
                 <v-select
                   :items="difficulties"
@@ -26,6 +25,7 @@
                   required
                   prepend-icon="mdi-chess-rook"
                   :rules="difficultyRules"
+                  @input="updateDifficulty"
                 ></v-select>
               </v-form>
             </v-card-text>
@@ -37,7 +37,6 @@
         </v-col>
       </v-row>
     </v-container>
-    {{ quizSettings }}
   </v-content>
 </template>
 
@@ -53,7 +52,7 @@ export default {
     valid: false,
     nameRules: [
       v => !!v || "Name is required",
-      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+      v => (v && v.length <= 15) || "Name must be less than 15 characters"
     ],
     difficultyRules: [v => !!v || "Please select a diffuculty!"]
   }),
@@ -64,14 +63,14 @@ export default {
         this.$router.push("/StartQuiz");
       }
     },
-    updateGameSettings(e) {
-      this.$store.commit("updateSettings", e);
+    updateName(e) {
+      this.$store.commit("updateNameSettings", e);
+    },
+    updateDifficulty(e) {
+      this.$store.commit("updateDifficultySettings", e);
     }
   },
   computed: {
-    quizSettings() {
-      return this.$store.state.quizSettings;
-    },
     ...mapState({
       name: state => state.quizSettings.name
     })
