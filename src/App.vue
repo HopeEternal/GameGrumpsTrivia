@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
 
   components: {},
 
@@ -32,5 +32,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

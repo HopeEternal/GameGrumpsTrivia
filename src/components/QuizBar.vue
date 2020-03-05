@@ -1,6 +1,9 @@
 <template>
   <v-container>
-    <v-toolbar dark src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+    <v-toolbar
+      dark
+      src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+    >
       <v-toolbar-title>Test your Game Grumps cred!</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -13,10 +16,9 @@
   </v-container>
 </template>
 
-
 <script>
 export default {
-  name: "QuizBar",
+  name: 'QuizBar',
 
   data: () => ({})
 };

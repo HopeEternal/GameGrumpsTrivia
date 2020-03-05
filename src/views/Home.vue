@@ -11,16 +11,16 @@
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
-                  v-model="name"
+                  :value="name"
                   label="Enter Your Name"
                   name="name"
                   :rules="nameRules"
                   :counter="15"
                   prepend-icon="mdi-account-circle"
                   type="text"
+                  @input="updateGameSettings"
                 />
                 <v-select
-                  v-model="difficultyLevel"
                   :items="difficulties"
                   label="Select a difficulty!"
                   required
@@ -42,33 +42,39 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  name: 'Home',
+  name: "Home",
 
   data: () => ({
-    difficulties: ['Easy', 'Average', 'Epic'],
-    difficultyLevel: '',
-    name: '',
+    difficulties: ["Easy", "Average", "Epic"],
     //Validation
     valid: false,
     nameRules: [
-      v => !!v || 'Name is required',
-      v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+      v => !!v || "Name is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
     ],
-    difficultyRules: [v => !!v || 'Please select a diffuculty!']
+    difficultyRules: [v => !!v || "Please select a diffuculty!"]
   }),
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
         this.snackbar = true;
-        this.$router.push('/StartQuiz');
+        this.$router.push("/StartQuiz");
       }
+    },
+    updateGameSettings(e) {
+      this.$store.commit("updateSettings", e);
     }
   },
   computed: {
     quizSettings() {
-      return this.$store.state.test;
-    }
+      return this.$store.state.quizSettings;
+    },
+    ...mapState({
+      name: state => state.quizSettings.name
+    })
   }
 };
 </script>

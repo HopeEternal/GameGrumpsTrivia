@@ -5,8 +5,15 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    difficultyLevel: '',
-    name: '',
-    test: 'test'
+    quizSettings: {
+      difficultyLevel: '',
+      name: '',
+      test: 'TEST'
+    }
+  },
+  mutations: {
+    updateSettings(state, settings) {
+      state.quizSettings.name = settings;
+    }
   }
 });
