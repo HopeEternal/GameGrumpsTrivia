@@ -1,10 +1,11 @@
 <template>
   <v-container>
-    <v-toolbar dark src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-      <v-toolbar-title>{{quizSettings.name}}</v-toolbar-title>
-
+    <v-toolbar color="orange darken-4" flat dark>
       <v-spacer></v-spacer>
-      <v-icon class="px-4">mdi-chess-rook</v-icon>
+
+      <v-icon class="px-4">mdi-account</v-icon>
+      <h3>{{quizSettings.name}}</h3>
+      <v-icon class="px-4 ml-8">mdi-chess-rook</v-icon>
       <h3>{{quizSettings.difficultyLevel}}</h3>
       <v-icon class="px-4 ml-8">mdi-timer</v-icon>
       <h3>2:00</h3>

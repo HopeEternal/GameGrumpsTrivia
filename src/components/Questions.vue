@@ -7,6 +7,7 @@
         <v-radio-group class="ms-5">
           <v-radio
             v-for="(answer, index) in question.answers"
+            v-model="userAnswer"
             :key="index"
             :label="`${answer}`"
             :value="index"
@@ -15,7 +16,7 @@
         </v-radio-group>
       </v-card-actions>
       <div v-if="question.answeredCorrectly !== ''">
-        <p>{{question.answeredCorrectly}}</p>
+        <p>{{question.answeredCorrectly}}{{userAnswer}}</p>
       </div>
     </v-card>
   </v-container>
@@ -26,6 +27,7 @@ export default {
   name: "Questions",
 
   data: () => ({
+    userAnswer: "",
     questions: [
       {
         category: "Quotes and Memes",

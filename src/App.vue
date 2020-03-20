@@ -5,6 +5,8 @@
       <v-toolbar-title>
         <h2 class="font-weight-thin">Game Grumps Trivia!</h2>
       </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <QuizBar />
     </v-app-bar>
 
     <v-content>
@@ -21,10 +23,13 @@
 </template>
 
 <script>
+import QuizBar from "@/components/QuizBar.vue";
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {},
+  components: {
+    QuizBar
+  },
 
   data: () => ({
     //
