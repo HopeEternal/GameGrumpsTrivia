@@ -6,7 +6,14 @@
         <h2 class="font-weight-thin">Game Grumps Trivia!</h2>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <QuizBar />
+      <v-icon class="px-4">mdi-account</v-icon>
+      <h3>{{quizSettings.name}}</h3>
+      <v-icon class="px-4 ml-8">mdi-chess-rook</v-icon>
+      <h3>{{quizSettings.difficultyLevel}}</h3>
+      <v-icon class="px-4 ml-8">mdi-timer</v-icon>
+      <h3>2:00</h3>
+      <v-icon class="px-4 ml-8">mdi-trophy</v-icon>
+      <h3>Score: 00</h3>
     </v-app-bar>
 
     <v-content>
@@ -23,17 +30,17 @@
 </template>
 
 <script>
-import QuizBar from "@/components/QuizBar.vue";
 export default {
   name: "App",
 
-  components: {
-    QuizBar
-  },
-
   data: () => ({
     //
-  })
+  }),
+  computed: {
+    quizSettings() {
+      return this.$store.state.quizSettings;
+    }
+  }
 };
 </script>
 
