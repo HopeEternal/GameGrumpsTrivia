@@ -8,8 +8,7 @@ export const store = new Vuex.Store({
     quizSettings: {
       difficultyLevel: '',
       name: '',
-      test: 'TEST'
-    }
+    },
   },
   mutations: {
     updateNameSettings(state, settings) {
@@ -17,6 +16,6 @@ export const store = new Vuex.Store({
     },
     updateDifficultySettings(state, settings) {
       state.quizSettings.difficultyLevel = settings;
-    }
-  }
+    },
+  },
 });
