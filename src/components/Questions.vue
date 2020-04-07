@@ -11,13 +11,20 @@
             :key="index"
             :label="`${answer}`"
             :value="index"
-            @click="checkAnswer(question, index)"
+            @mousedown="checkAnswer(question, index)"
           ></v-radio>
         </v-radio-group>
       </v-card-actions>
-      <div v-if="question.answeredCorrectly !== ''">
-        <p>{{question.answeredCorrectly}}{{userAnswer}}</p>
-      </div>
+      <v-alert
+        v-if="question.answeredCorrectly == 'That is correct!'"
+        type="success"
+        icon="mdi-thumb-up"
+      >{{question.answeredCorrectly}}{{userAnswer}}</v-alert>
+      <v-alert
+        v-else-if="question.answeredCorrectly == 'Sorry, that\'s incorrect!'"
+        type="error"
+        icon="mdi-emoticon-sad"
+      >{{question.answeredCorrectly}}{{userAnswer}}</v-alert>
     </v-card>
   </v-container>
 </template>
